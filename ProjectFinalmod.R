@@ -104,7 +104,7 @@ datatidy.pollutant <- data.tidy %>%
                       summarise_each(funs(mean(Arithmetic.Mean)))
 
 dim(datatidy.pollutant)
-#View(datatidy.pollutant)
+View(datatidy.pollutant)
 kable(head(datatidy.pollutant))
 
 #-----------------------------
@@ -115,5 +115,61 @@ kable(head(datatidy.pollutant))
 #-----------------------------
 haps.unique.PM <-datatidy.pollutant[grep(" PM", datatidy.pollutant$Parameter.Name.x), ]
 print(haps.unique.PM)
+
+
+
+
+
+################--NEO4J - DATA PREPARTION ---- Generate a CSV file for loading the proxy data into Neo4j----------- Added by Suman #################
+
+#Load pollution data for 'Texas', for polluants [Chloroform, Benzene,Lead PM2.5 LC,Arsenic PM2.5 LC]
+
+#Construct a Location data frame
+#Node:
+#  Location  -- city name, lang, lat, state
+#  Pollutant  -- code,name
+#Relationship: [ city name, state <--> code]
+#  observation -- year, measurement (arithmetic mean)  
+
+
+View(datatidy.pollutant)
+View(annual.pollution.data)
+colnames(datatidy.pollutant)
+colnames(annual.pollution.data)
+
+#Gather unique cities
+city.df <- annual.pollution.data %>%
+  filter(City.Name != ''& State.Name == 'Texas')  %>%
+    group_by(State.Name, City.Name)  %>%
+      summarise() %>%
+        select(State.Name, City.Name)
+View(city.df)
+colnames(city.df)
+
+#Gather unique pollutants
+pollutant.df <- datatidy.pollutant %>%
+  filter(City.Name != '' & grepl('Chloroform|Benzene|Lead PM2.5 LC|Arsenic PM2.5 LC', Parameter.Name.x) & State.Name == 'Texas')  %>%
+    group_by(Parameter.Code, Parameter.Name.x)  %>%
+      summarise() %>%
+         select(Parameter.Code, Parameter.Name.x)
+View(pollutant.df)
+colnames(pollutant.df)
+
+#Gather the relationship [observation] between the city and pollutant - year, measurement (arithmetic mean)
+observation.df <- datatidy.pollutant %>%
+  filter(City.Name != '' & grepl('Chloroform|Benzene|Lead PM2.5 LC|Arsenic PM2.5 LC', Parameter.Name.x) & State.Name == 'Texas')  %>%
+       select(Year, State.Name, City.Name, Parameter.Code, Parameter.Name.x, Arithmetic.Mean)
+View(observation.df)
+colnames(observation.df)
+
+#Preare csv files from the above data frames:
+?write.csv
+write.table(city.df, "city-data.csv", quote=FALSE, row.names=FALSE, col.names=c('state','city'), sep=",")
+write.table(pollutant.df, "pollutant-data.csv", quote=FALSE, row.names=FALSE, col.names=c('code','name'), sep=",")
+write.table(observation.df, "observation-data.csv", quote=FALSE, row.names=FALSE, col.names=c('code','name'), sep=",")
+
+getwd()
+
+
 
 
