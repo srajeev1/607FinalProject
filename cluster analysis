@@ -13,7 +13,7 @@ library(plyr)
 #tf <- tempfile(tmpdir=td, fileext=".zip")
 #download.file(url.nhe, tf)
 
-# iad permission denial from the URL, so i have to open the file from my c drive. Also changed char to integer for variable
+
 #Read the data into a data frame
 nhe.data <- read.xlsx("~/IS 607/FINAL PROJECT/NHE2013.xls",stringsAsFactors=F, header=FALSE,colClasses="integer", startRow=2, rowIndex=c(2,4,6,38,32,35,103,133,223,253,283,313,343,373,493), colIndex=NULL,as.data.frame=TRUE,sheetIndex=1)
 
@@ -57,7 +57,7 @@ summary(nhe.data.final)
 
 data(nhe.data.final, package="flexclust")
 row.names(nhe.data.final) <- tolower(row.names(nhe.data.final))
-nhe.scaled <- scale(nhe.data.final)
+nhe.scaled <- scale(nhe.data.final[,-1])
 d <- dist(nhe.scaled)
 fit.average <- hclust(d, method="average")
 plot(fit.average, hang=-1, cex=.8, main="Average Linkage Clustering")
@@ -99,18 +99,40 @@ rect.hclust(fit.average, k=3)
 # k-means clustering
 
 wssplot <- function(data, nc=15, seed=1234){
-  wss <- (nrow(data)-1)*sum(apply(data,2,var))
+  wss <- (nrow(data))*sum(apply(data,2,var))
   for (i in 2:nc){ set.seed(seed)
                    wss[i] <- sum(kmeans(data, centers=i)$withinss)}
-  plot(1:nc, was, type="b", xlab="Number of Clusters",
+  plot(1:nc, wss, type="b", xlab="Number of Clusters",
        ylab="Within groups sum of squares")
 }
 
 
 data(nhe.data.final)
-df <- scale(nhe.data.final[-1])
+
+head(nhe.data.final,4)
+df <- scale(nhe.data.final[,-1])
+head(df)
 wssplot(df)
 set.seed(1234)
 devAskNewPage(ask=TRUE)
 nc <- NbClust(df, min.nc=2, max.nc=15, method="kmeans")
 table(nc$Best.n[1,])
+
+barplot(table(nc$Best.n[1,]), xlab="Number of Clusters", ylab="Number of Criteria", main="number of clusters chosen by 15 Criteria")
+
+set.seed(1234)
+fit.km <- kmeans(df, 3)
+fit.km$size
+
+fit.km$centers
+
+aggregate(nhe.data.final[,-1], by=list(cluster=fit.km$cluster), mean)
+
+#Partitioning around medoids
+
+set.seed(1234)
+fit.pam <- pam(nhe.data.final, k=3, stand=TRUE)
+
+fit.pam$medoids
+
+clusplot(fit.pam, main="Expenditure Cluster PLot")
