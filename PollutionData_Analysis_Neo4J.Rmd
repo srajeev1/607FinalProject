@@ -1,17 +1,32 @@
-#-------------------------------------------------------------------------------------------------------
-#Load the required libraries
+---
+title: "Preare & Load Proxy Pollution Data into Neo4J"
+author: Suman, Sreeja, Jamey
+date: "Monday, May 25, 2015"
+output: html_document
+---
 
+#Activity Definition:
+
+Acquire the Pollutants data, prepare a proxy set of data , load into Neo4J , and analyse.
+
+Data Sources:  
+   + Pollution Data: http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata  
+   + HAPS Data:      https://ofmext.epa.gov/AQDMRS/ws/list?name=param&pc=CORE_HAPS&resource=rawData
+
+
+## Data Acquisition:
+
+```{r, echo=FALSE}
 library(rvest)
 library(plyr)
 Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_45")
-install.packages('rJava')
-install.packages("xlsx")
 library(rJava)
 library(xlsx)
 library(knitr)
+```
 
-#-------------------------------------------------------------------------------------------------------
 
+```{r}
 # *********** Load the hazardoes air pollutants: *****************************************************
 
 haps.url <- "https://ofmext.epa.gov/AQDMRS/ws/list?name=param&pc=CORE_HAPS&resource=rawData"
@@ -24,8 +39,6 @@ haps.raw.data <- html(haps.url) %>%
 haps.data <- read.table(text=haps.raw.data, sep="\t",  col.names = c("Parameter.Code", "Parameter.Name"))
 
 dim(haps.data)
-kable(head(haps.data))
-#View(haps.data)
 
 #-------------------------------------------------------------------------------------------------------
 
@@ -56,35 +69,26 @@ GetAnnualPollutionData <- function(year) {
 
 #Call the function 'GetAnnualPollutionData' to load the annual polllution data between 2009 to 2014
 annual.pollution.data <- ldply(2009:2014, GetAnnualPollutionData)
-dim(annual.pollution.data)
-kable(head(annual.pollution.data))
+```
 
 
 
-#Added by Sreejaya
-#********************************************************************************************************
+##Tidying and Transforming
 
-#Tidying and Transforming
-
+```{r, echo=FALSE}
 library(dplyr)
+```
 
-#********************************************************************************************************
 
-colnames(annual.pollution.data)
-
-# Join haps.data with annual.pollution.data on Parameter.Code
+```{r}
+#Join haps.data with annual.pollution.data on Parameter.Code
 #This will give us only the hazardous polluants data ONLY across the country.
 data.merge <- merge(x = annual.pollution.data, y = haps.data, by = "Parameter.Code")
-colnames(data.merge)
-dim(data.merge)
-
 
 data.tidy <- data.merge %>%
                  select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Event.Type,Arithmetic.Mean ) %>%
                      filter(Event.Type  == "No Events") %>%
                           arrange(desc(Year), State.Name)
-
-kable(head(data.tidy))
 
 #-----------------------------
 # proxy data - Just take 3 cities and Compare.
@@ -104,7 +108,6 @@ datatidy.pollutant <- data.tidy %>%
                       summarise_each(funs(mean(Arithmetic.Mean)))
 
 dim(datatidy.pollutant)
-View(datatidy.pollutant)
 kable(head(datatidy.pollutant))
 
 #-----------------------------
@@ -114,16 +117,15 @@ kable(head(datatidy.pollutant))
 #Filter out small particles
 #-----------------------------
 haps.unique.PM <-datatidy.pollutant[grep(" PM", datatidy.pollutant$Parameter.Name.x), ]
-print(haps.unique.PM)
+kable(head(haps.unique.PM))
+```
 
 
+## NEO4J - DATA PREPARTION ---- Generate CSV files for loading the proxy data into Neo4j
 
+__Load pollution data for 'Texas', for polluants [Chloroform, Benzene,Lead PM2.5 LC,Arsenic PM2.5 LC]__
 
-
-################--NEO4J - DATA PREPARTION ---- Generate a CSV file for loading the proxy data into Neo4j----------- Added by Suman #################
-
-#Load pollution data for 'Texas', for polluants [Chloroform, Benzene,Lead PM2.5 LC,Arsenic PM2.5 LC]
-
+```{r}
 #Construct a Location data frame
 #Node:
 #  Location  -- city name, lang, lat, state
@@ -132,19 +134,13 @@ print(haps.unique.PM)
 #  observation -- year, measurement (arithmetic mean)  
 
 
-View(datatidy.pollutant)
-View(annual.pollution.data)
-colnames(datatidy.pollutant)
-colnames(annual.pollution.data)
-
 #Gather unique cities
 city.df <- annual.pollution.data %>%
   filter(City.Name != ''& State.Name == 'Texas')  %>%
     group_by(State.Name, City.Name)  %>%
       summarise() %>%
         select(State.Name, City.Name)
-View(city.df)
-colnames(city.df)
+
 
 #Gather unique pollutants
 pollutant.df <- datatidy.pollutant %>%
@@ -152,24 +148,31 @@ pollutant.df <- datatidy.pollutant %>%
     group_by(Parameter.Code, Parameter.Name.x)  %>%
       summarise() %>%
          select(Parameter.Code, Parameter.Name.x)
-View(pollutant.df)
-colnames(pollutant.df)
 
 #Gather the relationship [observation] between the city and pollutant - year, measurement (arithmetic mean)
 observation.df <- datatidy.pollutant %>%
   filter(City.Name != '' & grepl('Chloroform|Benzene|Lead PM2.5 LC|Arsenic PM2.5 LC', Parameter.Name.x) & State.Name == 'Texas')  %>%
        select(Year, State.Name, City.Name, Parameter.Code, Parameter.Name.x, Arithmetic.Mean)
-View(observation.df)
-colnames(observation.df)
+```
 
-#Preare csv files from the above data frames:
-?write.csv
+__View the Sample Data__
+
+```{r}
+kable(head(city.df))
+kable(head(pollutant.df))
+kable(head(observation.df))
+````
+
+
+__Preare csv files from the above data frames__
+
+```{r}
 write.table(city.df, "city-data.csv", quote=FALSE, row.names=FALSE, col.names=c('state','city'), sep=",")
 write.table(pollutant.df, "pollutant-data.csv", quote=FALSE, row.names=FALSE, col.names=c('code','name'), sep=",")
 write.table(observation.df, "observation-data.csv", quote=FALSE, row.names=FALSE, col.names=c('year','state', 'city', 'code', 'name', 'measurement'), sep=",")
-
-getwd()
-
+```
 
 
+## NEO4J - Data Analysis  
 
+[Click here for Neo4J Analysis](https://github.com/srajeev1/607FinalProject/blob/master/PollutionData_Analysis_Neo4J.pdf)

@@ -1,0 +1,34 @@
+﻿commit
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   DataAcquisition.R
+#	new file:   DataAcquisition_RegressionAnalysis.R
+#	new file:   IS607_Final_Summary-figure/unnamed-chunk-2-1.png
+#	new file:   NHE13_Summary_Final.xls
+#	new file:   PollutionData_Analysis_Neo4J.Rmd
+#	new file:   PollutionData_Analysis_Neo4J.html
+#	modified:   ProjectFinalmod.R
+#	new file:   RegressionAnalysis.Rmd
+#	new file:   RegressionAnalysis.html
+#	new file:   city-data.csv
+#	new file:   mso9131.tmp
+#	new file:   observation-data.csv
+#	new file:   pollutant-data.csv
+#	new file:   summary/Clustering_1.PNG
+#	new file:   summary/IS607_Final_Summary-rpubs.html
+#	new file:   summary/IS607_Final_Summary.Rpres
+#	new file:   summary/IS607_Final_Summary.md
+#	new file:   summary/Pollutant_Concentation_1.PNG
+#	new file:   summary/Reg_1.png
+#	new file:   summary/Reg_2.PNG
+#	new file:   summary/Reg_3.PNG
+#	new file:   summary/neo4j_1.PNG
+#
+# Untracked files:
+#	w5j5sg30.yri.txt
+#
+

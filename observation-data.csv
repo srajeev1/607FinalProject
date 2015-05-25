@@ -1,0 +1,436 @@
+year,state,city,code,name,measurement
+2009,Texas,Austin,43803,Chloroform,0.019298
+2009,Texas,Austin,45201,Benzene,1.988421
+2009,Texas,Baytown,43803,Chloroform,0.035167
+2009,Texas,Baytown,45201,Benzene,3.564
+2009,Texas,Beaumont,43803,Chloroform,0.03
+2009,Texas,Beaumont,45201,Benzene,2.311126
+2009,Texas,Brownsville,43803,Chloroform,0.013729
+2009,Texas,Brownsville,45201,Benzene,1.525424
+2009,Texas,Channelview,43803,Chloroform,0.038793
+2009,Texas,Channelview,45201,Benzene,4.882185
+2009,Texas,Clute (corporate name for Clute City),43803,Chloroform,0.027049
+2009,Texas,Clute (corporate name for Clute City),45201,Benzene,1.375082
+2009,Texas,Conroe,43803,Chloroform,0.018833
+2009,Texas,Conroe,45201,Benzene,1.497
+2009,Texas,Corpus Christi,43803,Chloroform,0.0133596666666667
+2009,Texas,Corpus Christi,45201,Benzene,4.80616566666667
+2009,Texas,Corpus Christi,88103,Arsenic PM2.5 LC,0
+2009,Texas,Corpus Christi,88128,Lead PM2.5 LC,0.004531
+2009,Texas,Dallas,43803,Chloroform,0.0248
+2009,Texas,Dallas,45201,Benzene,1.25998266666667
+2009,Texas,Dallas,88103,Arsenic PM2.5 LC,0.0001325
+2009,Texas,Dallas,88128,Lead PM2.5 LC,0.00244
+2009,Texas,Deer Park,43803,Chloroform,0.036615
+2009,Texas,Deer Park,45201,Benzene,3.346651
+2009,Texas,Deer Park,88103,Arsenic PM2.5 LC,0.000627
+2009,Texas,Deer Park,88128,Lead PM2.5 LC,0.000797
+2009,Texas,Denton,43803,Chloroform,0.014918
+2009,Texas,Denton,45201,Benzene,1.136066
+2009,Texas,Diboll,43803,Chloroform,0.021
+2009,Texas,Diboll,45201,Benzene,1.136
+2009,Texas,El Paso,43803,Chloroform,0.0158973333333333
+2009,Texas,El Paso,45201,Benzene,3.886552
+2009,Texas,El Paso,88103,Arsenic PM2.5 LC,0.000263
+2009,Texas,El Paso,88128,Lead PM2.5 LC,0.0043395
+2009,Texas,Fort Worth,43803,Chloroform,0.017705
+2009,Texas,Fort Worth,45201,Benzene,1.1727145
+2009,Texas,Galena Park,43803,Chloroform,0.048958
+2009,Texas,Galena Park,45201,Benzene,4.90625
+2009,Texas,Galveston,43803,Chloroform,0.0170835
+2009,Texas,Galveston,45201,Benzene,1.0745
+2009,Texas,Grapevine,43803,Chloroform,0.018033
+2009,Texas,Grapevine,45201,Benzene,1.037705
+2009,Texas,Greenville,43803,Chloroform,0.015333
+2009,Texas,Greenville,45201,Benzene,1.115
+2009,Texas,Houston,43803,Chloroform,0.031977
+2009,Texas,Houston,45201,Benzene,2.89331314285714
+2009,Texas,Kaufman,43803,Chloroform,0.014833
+2009,Texas,Kaufman,45201,Benzene,1.027
+2009,Texas,La Porte,43803,Chloroform,0.032459
+2009,Texas,La Porte,45201,Benzene,4.87377
+2009,Texas,Laredo,43803,Chloroform,0.0147805
+2009,Texas,Laredo,45201,Benzene,3.1466665
+2009,Texas,Lubbock,88103,Arsenic PM2.5 LC,2.3e-05
+2009,Texas,Lubbock,88128,Lead PM2.5 LC,0.001347
+2009,Texas,Mercedes,43803,Chloroform,0.015818
+2009,Texas,Mercedes,45201,Benzene,1.329818
+2009,Texas,Midlothian,43803,Chloroform,0.014333
+2009,Texas,Midlothian,45201,Benzene,0.937
+2009,Texas,Midlothian,88103,Arsenic PM2.5 LC,0.000144
+2009,Texas,Midlothian,88128,Lead PM2.5 LC,0.002458
+2009,Texas,Mission,43803,Chloroform,0.017
+2009,Texas,Mission,45201,Benzene,1.914
+2009,Texas,Nederland,45201,Benzene,1.889996
+2009,Texas,Odessa,45201,Benzene,1.542467
+2009,Texas,Pasadena,43803,Chloroform,0.031148
+2009,Texas,Pasadena,45201,Benzene,8.354754
+2009,Texas,Port Arthur,43803,Chloroform,0.03237325
+2009,Texas,Port Arthur,45201,Benzene,3.70205675
+2009,Texas,Port Arthur,88103,Arsenic PM2.5 LC,1.7e-05
+2009,Texas,Port Arthur,88128,Lead PM2.5 LC,0.001921
+2009,Texas,Port Neches,43803,Chloroform,0.044717
+2009,Texas,Port Neches,45201,Benzene,2.479245
+2009,Texas,San Antonio,43803,Chloroform,0.016667
+2009,Texas,San Antonio,45201,Benzene,1.916
+2009,Texas,Texas City,43803,Chloroform,0.025192
+2009,Texas,Texas City,45201,Benzene,3.298846
+2010,Texas,Austin,43803,Chloroform,0.020517
+2010,Texas,Austin,45201,Benzene,1.882759
+2010,Texas,Baytown,43803,Chloroform,0.051475
+2010,Texas,Baytown,45201,Benzene,2.831803
+2010,Texas,Beaumont,43803,Chloroform,0.024394
+2010,Texas,Beaumont,45201,Benzene,2.841133
+2010,Texas,Brownsville,43803,Chloroform,0.013148
+2010,Texas,Brownsville,45201,Benzene,1.197778
+2010,Texas,Channelview,43803,Chloroform,0.159483
+2010,Texas,Channelview,45201,Benzene,4.2963515
+2010,Texas,Clute (corporate name for Clute City),43803,Chloroform,0.031967
+2010,Texas,Clute (corporate name for Clute City),45201,Benzene,1.21377
+2010,Texas,Conroe,43803,Chloroform,0.019138
+2010,Texas,Conroe,45201,Benzene,1.357241
+2010,Texas,Corpus Christi,43803,Chloroform,0.0138183333333333
+2010,Texas,Corpus Christi,45201,Benzene,3.60829125
+2010,Texas,Corpus Christi,88103,Arsenic PM2.5 LC,3.7e-05
+2010,Texas,Corpus Christi,88128,Lead PM2.5 LC,0.001842
+2010,Texas,Dallas,43803,Chloroform,0.023833
+2010,Texas,Dallas,45201,Benzene,1.2084685
+2010,Texas,Dallas,88103,Arsenic PM2.5 LC,0.0001495
+2010,Texas,Dallas,88128,Lead PM2.5 LC,0.00243
+2010,Texas,Decatur,45201,Benzene,1.183709
+2010,Texas,Deer Park,43803,Chloroform,0.0386516666666667
+2010,Texas,Deer Park,45201,Benzene,3.21748325
+2010,Texas,Deer Park,88103,Arsenic PM2.5 LC,0.0004525
+2010,Texas,Deer Park,88128,Lead PM2.5 LC,0.0009185
+2010,Texas,Denton,43803,Chloroform,0.0125
+2010,Texas,Denton,45201,Benzene,1.224
+2010,Texas,Diboll,43803,Chloroform,0.015556
+2010,Texas,Diboll,45201,Benzene,1.512
+2010,Texas,El Paso,43803,Chloroform,0.0179685
+2010,Texas,El Paso,45201,Benzene,3.4406786
+2010,Texas,El Paso,88103,Arsenic PM2.5 LC,0.0002255
+2010,Texas,El Paso,88128,Lead PM2.5 LC,0.0044775
+2010,Texas,Fort Worth,43803,Chloroform,0.016557
+2010,Texas,Fort Worth,45201,Benzene,1.2536935
+2010,Texas,Galena Park,43803,Chloroform,0.045849
+2010,Texas,Galena Park,45201,Benzene,6.370189
+2010,Texas,Galveston,43803,Chloroform,0.012414
+2010,Texas,Galveston,45201,Benzene,0.9
+2010,Texas,Grapevine,43803,Chloroform,0.017833
+2010,Texas,Grapevine,45201,Benzene,1.027
+2010,Texas,Greenville,43803,Chloroform,0.015862
+2010,Texas,Greenville,45201,Benzene,1.133793
+2010,Texas,Houston,43803,Chloroform,0.0366846666666667
+2010,Texas,Houston,45201,Benzene,2.87034666666667
+2010,Texas,Kaufman,43803,Chloroform,0.013
+2010,Texas,Kaufman,45201,Benzene,1.023
+2010,Texas,La Porte,43803,Chloroform,0.142667
+2010,Texas,La Porte,45201,Benzene,4.865
+2010,Texas,Laredo,43803,Chloroform,0.016946
+2010,Texas,Laredo,45201,Benzene,3.0774735
+2010,Texas,Lubbock,88103,Arsenic PM2.5 LC,0
+2010,Texas,Lubbock,88128,Lead PM2.5 LC,0.002942
+2010,Texas,Mercedes,43803,Chloroform,0.012667
+2010,Texas,Mercedes,45201,Benzene,1.006
+2010,Texas,Midlothian,43803,Chloroform,0.012759
+2010,Texas,Midlothian,45201,Benzene,0.882414
+2010,Texas,Midlothian,88103,Arsenic PM2.5 LC,1.1e-05
+2010,Texas,Midlothian,88128,Lead PM2.5 LC,0.0034
+2010,Texas,Mission,43803,Chloroform,0.015085
+2010,Texas,Mission,45201,Benzene,1.505085
+2010,Texas,Nederland,45201,Benzene,2.109848
+2010,Texas,Odessa,45201,Benzene,1.692009
+2010,Texas,Pasadena,43803,Chloroform,0.032241
+2010,Texas,Pasadena,45201,Benzene,3.715862
+2010,Texas,Pecan Acres,45201,Benzene,0.418583
+2010,Texas,Port Arthur,43803,Chloroform,0.02677325
+2010,Texas,Port Arthur,45201,Benzene,4.05559975
+2010,Texas,Port Arthur,88103,Arsenic PM2.5 LC,6e-05
+2010,Texas,Port Arthur,88128,Lead PM2.5 LC,0.001736
+2010,Texas,Port Neches,43803,Chloroform,0.033396
+2010,Texas,Port Neches,45201,Benzene,2.103396
+2010,Texas,San Antonio,43803,Chloroform,0.017193
+2010,Texas,San Antonio,45201,Benzene,1.830526
+2010,Texas,Texas City,43803,Chloroform,0.023962
+2010,Texas,Texas City,45201,Benzene,3.173208
+2010,Texas,Flower Mound,45201,Benzene,0.978168
+2011,Texas,Austin,43803,Chloroform,0.013962
+2011,Texas,Austin,45201,Benzene,1.579245
+2011,Texas,Baytown,43803,Chloroform,0.031698
+2011,Texas,Baytown,45201,Benzene,2.721509
+2011,Texas,Beaumont,43803,Chloroform,0.018802
+2011,Texas,Beaumont,45201,Benzene,2.21157933333333
+2011,Texas,Brownsville,43803,Chloroform,0.010328
+2011,Texas,Brownsville,45201,Benzene,1.321967
+2011,Texas,Channelview,43803,Chloroform,0.0544
+2011,Texas,Channelview,45201,Benzene,3.923937
+2011,Texas,Clute (corporate name for Clute City),43803,Chloroform,0.017705
+2011,Texas,Clute (corporate name for Clute City),45201,Benzene,1.252131
+2011,Texas,Conroe,43803,Chloroform,0.015
+2011,Texas,Conroe,45201,Benzene,1.442222
+2011,Texas,Corpus Christi,43803,Chloroform,0.0101946666666667
+2011,Texas,Corpus Christi,45201,Benzene,2.93362825
+2011,Texas,Corpus Christi,88103,Arsenic PM2.5 LC,4.5e-05
+2011,Texas,Corpus Christi,88128,Lead PM2.5 LC,0.002509
+2011,Texas,Dallas,43803,Chloroform,0.020727
+2011,Texas,Dallas,45201,Benzene,1.100058
+2011,Texas,Dallas,88103,Arsenic PM2.5 LC,0.0001395
+2011,Texas,Dallas,88128,Lead PM2.5 LC,0.002472
+2011,Texas,Decatur,45201,Benzene,0.990286
+2011,Texas,Deer Park,43803,Chloroform,0.0289806666666667
+2011,Texas,Deer Park,45201,Benzene,2.71898625
+2011,Texas,Deer Park,88103,Arsenic PM2.5 LC,0.000414
+2011,Texas,Deer Park,88128,Lead PM2.5 LC,0.0008525
+2011,Texas,Denton,43803,Chloroform,0.011
+2011,Texas,Denton,45201,Benzene,1.251
+2011,Texas,El Paso,43803,Chloroform,0.01648
+2011,Texas,El Paso,45201,Benzene,2.1207844
+2011,Texas,El Paso,88103,Arsenic PM2.5 LC,0.000412
+2011,Texas,El Paso,88128,Lead PM2.5 LC,0.002907
+2011,Texas,Fort Worth,43803,Chloroform,0.011667
+2011,Texas,Fort Worth,45201,Benzene,1.3022065
+2011,Texas,Galena Park,43803,Chloroform,0.032115
+2011,Texas,Galena Park,45201,Benzene,5.521154
+2011,Texas,Galveston,43803,Chloroform,0.010893
+2011,Texas,Galveston,45201,Benzene,0.940714
+2011,Texas,Grapevine,43803,Chloroform,0.015082
+2011,Texas,Grapevine,45201,Benzene,1.043607
+2011,Texas,Greenville,43803,Chloroform,0.013934
+2011,Texas,Greenville,45201,Benzene,1.245246
+2011,Texas,Houston,43803,Chloroform,0.0268176666666667
+2011,Texas,Houston,45201,Benzene,2.38611333333333
+2011,Texas,Kaufman,43803,Chloroform,0.013607
+2011,Texas,Kaufman,45201,Benzene,1.06623
+2011,Texas,La Porte,43803,Chloroform,0.212295
+2011,Texas,La Porte,45201,Benzene,5.351803
+2011,Texas,Laredo,43803,Chloroform,0.0124455
+2011,Texas,Laredo,45201,Benzene,2.438991
+2011,Texas,Mercedes,43803,Chloroform,0.008571
+2011,Texas,Mercedes,45201,Benzene,1.062857
+2011,Texas,Midlothian,43803,Chloroform,0.007966
+2011,Texas,Midlothian,45201,Benzene,0.956949
+2011,Texas,Midlothian,88103,Arsenic PM2.5 LC,1.7e-05
+2011,Texas,Midlothian,88128,Lead PM2.5 LC,0.003503
+2011,Texas,Mission,43803,Chloroform,0.011754
+2011,Texas,Mission,45201,Benzene,1.505263
+2011,Texas,Nederland,45201,Benzene,1.743209
+2011,Texas,Odessa,45201,Benzene,1.905199
+2011,Texas,Pasadena,43803,Chloroform,0.02322
+2011,Texas,Pasadena,45201,Benzene,2.919661
+2011,Texas,Pecan Acres,45201,Benzene,0.584494
+2011,Texas,Port Arthur,43803,Chloroform,0.01964375
+2011,Texas,Port Arthur,45201,Benzene,2.7255405
+2011,Texas,Port Neches,43803,Chloroform,0.026
+2011,Texas,Port Neches,45201,Benzene,1.824
+2011,Texas,San Antonio,43803,Chloroform,0.012963
+2011,Texas,San Antonio,45201,Benzene,1.561111
+2011,Texas,Texas City,43803,Chloroform,0.018983
+2011,Texas,Texas City,45201,Benzene,3.10678
+2011,Texas,Flower Mound,45201,Benzene,0.763688
+2011,Texas,Everman,45201,Benzene,0.796794
+2012,Texas,Austin,43803,Chloroform,0.020727
+2012,Texas,Austin,45201,Benzene,1.652727
+2012,Texas,Baytown,43803,Chloroform,0.031875
+2012,Texas,Baytown,45201,Benzene,2.83625
+2012,Texas,Beaumont,43803,Chloroform,0.0235605
+2012,Texas,Beaumont,45201,Benzene,2.28555566666667
+2012,Texas,Brownsville,43803,Chloroform,0.012982
+2012,Texas,Brownsville,45201,Benzene,1.106316
+2012,Texas,Channelview,43803,Chloroform,0.05463
+2012,Texas,Channelview,45201,Benzene,5.4606835
+2012,Texas,Clute (corporate name for Clute City),43803,Chloroform,0.023036
+2012,Texas,Clute (corporate name for Clute City),45201,Benzene,1.138929
+2012,Texas,Conroe,43803,Chloroform,0.018305
+2012,Texas,Conroe,45201,Benzene,1.404407
+2012,Texas,Corpus Christi,43803,Chloroform,0.012336
+2012,Texas,Corpus Christi,45201,Benzene,3.22937875
+2012,Texas,Corpus Christi,88103,Arsenic PM2.5 LC,7.3e-05
+2012,Texas,Corpus Christi,88128,Lead PM2.5 LC,0.001713
+2012,Texas,Dallas,43803,Chloroform,0.021455
+2012,Texas,Dallas,45201,Benzene,1.087629
+2012,Texas,Dallas,88103,Arsenic PM2.5 LC,0.0003145
+2012,Texas,Dallas,88128,Lead PM2.5 LC,0.003573
+2012,Texas,Deer Park,43803,Chloroform,0.0383403333333333
+2012,Texas,Deer Park,45201,Benzene,2.63048575
+2012,Texas,Deer Park,88103,Arsenic PM2.5 LC,0.000752
+2012,Texas,Deer Park,88128,Lead PM2.5 LC,0.0010245
+2012,Texas,Denton,43803,Chloroform,0.011333
+2012,Texas,Denton,45201,Benzene,1.19
+2012,Texas,El Paso,43803,Chloroform,0.0173366666666667
+2012,Texas,El Paso,45201,Benzene,1.9159168
+2012,Texas,El Paso,88103,Arsenic PM2.5 LC,0.00056
+2012,Texas,El Paso,88128,Lead PM2.5 LC,0.003211
+2012,Texas,Fort Worth,43803,Chloroform,0.015424
+2012,Texas,Fort Worth,45201,Benzene,1.2214045
+2012,Texas,Galena Park,43803,Chloroform,0.048723
+2012,Texas,Galena Park,45201,Benzene,6.102128
+2012,Texas,Galveston,43803,Chloroform,0.014727
+2012,Texas,Galveston,45201,Benzene,0.985091
+2012,Texas,Grapevine,43803,Chloroform,0.017636
+2012,Texas,Grapevine,45201,Benzene,1.017818
+2012,Texas,Greenville,43803,Chloroform,0.016333
+2012,Texas,Greenville,45201,Benzene,0.993
+2012,Texas,Houston,43803,Chloroform,0.0374016666666667
+2012,Texas,Houston,45201,Benzene,2.54926466666667
+2012,Texas,Kaufman,43803,Chloroform,0.012881
+2012,Texas,Kaufman,45201,Benzene,0.915254
+2012,Texas,La Porte,43803,Chloroform,0.130172
+2012,Texas,La Porte,45201,Benzene,3.786207
+2012,Texas,Laredo,43803,Chloroform,0.012917
+2012,Texas,Laredo,45201,Benzene,3.90875
+2012,Texas,Mercedes,43803,Chloroform,0.012791
+2012,Texas,Mercedes,45201,Benzene,0.85814
+2012,Texas,Midlothian,43803,Chloroform,0.01431
+2012,Texas,Midlothian,45201,Benzene,0.841034
+2012,Texas,Midlothian,88103,Arsenic PM2.5 LC,5.9e-05
+2012,Texas,Midlothian,88128,Lead PM2.5 LC,0.002578
+2012,Texas,Mission,43803,Chloroform,0.016316
+2012,Texas,Mission,45201,Benzene,1.3
+2012,Texas,Nederland,45201,Benzene,1.588425
+2012,Texas,Odessa,45201,Benzene,1.818034
+2012,Texas,Pasadena,43803,Chloroform,0.038621
+2012,Texas,Pasadena,45201,Benzene,3.155172
+2012,Texas,Port Arthur,43803,Chloroform,0.0237655
+2012,Texas,Port Arthur,45201,Benzene,3.5108265
+2012,Texas,Port Neches,43803,Chloroform,0.033279
+2012,Texas,Port Neches,45201,Benzene,1.948525
+2012,Texas,San Antonio,43803,Chloroform,0.012941
+2012,Texas,San Antonio,45201,Benzene,1.577647
+2012,Texas,Socorro,43803,Chloroform,0.02
+2012,Texas,Socorro,45201,Benzene,2.1
+2012,Texas,Texas City,43803,Chloroform,0.023818
+2012,Texas,Texas City,45201,Benzene,2.453455
+2013,Texas,Austin,43803,Chloroform,0.019167
+2013,Texas,Austin,45201,Benzene,1.494
+2013,Texas,Baytown,43803,Chloroform,0.032549
+2013,Texas,Baytown,45201,Benzene,2.214118
+2013,Texas,Beaumont,43803,Chloroform,0.0204495
+2013,Texas,Beaumont,45201,Benzene,2.02011866666667
+2013,Texas,Brownsville,43803,Chloroform,0.014035
+2013,Texas,Brownsville,45201,Benzene,1.212632
+2013,Texas,Channelview,43803,Chloroform,0.061207
+2013,Texas,Channelview,45201,Benzene,4.046313
+2013,Texas,Clute (corporate name for Clute City),43803,Chloroform,0.024833
+2013,Texas,Clute (corporate name for Clute City),45201,Benzene,0.952
+2013,Texas,Conroe,43803,Chloroform,0.015909
+2013,Texas,Conroe,45201,Benzene,1.412727
+2013,Texas,Corpus Christi,43803,Chloroform,0.00879466666666667
+2013,Texas,Corpus Christi,45201,Benzene,2.84846275
+2013,Texas,Corpus Christi,88103,Arsenic PM2.5 LC,8.6e-05
+2013,Texas,Corpus Christi,88128,Lead PM2.5 LC,0.001931
+2013,Texas,Dallas,43803,Chloroform,0.019153
+2013,Texas,Dallas,45201,Benzene,1.0395735
+2013,Texas,Dallas,88103,Arsenic PM2.5 LC,0.000308
+2013,Texas,Dallas,88128,Lead PM2.5 LC,0.0014725
+2013,Texas,Deer Park,43803,Chloroform,0.0297345
+2013,Texas,Deer Park,45201,Benzene,2.37439566666667
+2013,Texas,Deer Park,88103,Arsenic PM2.5 LC,0.0009365
+2013,Texas,Deer Park,88128,Lead PM2.5 LC,0.000953
+2013,Texas,Denton,43803,Chloroform,0.012203
+2013,Texas,Denton,45201,Benzene,1.415593
+2013,Texas,El Paso,43803,Chloroform,0.0132325
+2013,Texas,El Paso,45201,Benzene,1.565206
+2013,Texas,El Paso,88103,Arsenic PM2.5 LC,0.000496
+2013,Texas,El Paso,88128,Lead PM2.5 LC,0.001584
+2013,Texas,Fort Worth,43803,Chloroform,0.013448
+2013,Texas,Fort Worth,45201,Benzene,1.119753
+2013,Texas,Galena Park,43803,Chloroform,0.033542
+2013,Texas,Galena Park,45201,Benzene,5.89125
+2013,Texas,Galveston,43803,Chloroform,0.012083
+2013,Texas,Galveston,45201,Benzene,1.0125
+2013,Texas,Grapevine,43803,Chloroform,0.01661
+2013,Texas,Grapevine,45201,Benzene,1.013898
+2013,Texas,Greenville,43803,Chloroform,0.011552
+2013,Texas,Greenville,45201,Benzene,0.957931
+2013,Texas,Houston,43803,Chloroform,0.053952
+2013,Texas,Houston,45201,Benzene,2.83237966666667
+2013,Texas,Kaufman,43803,Chloroform,0.011667
+2013,Texas,Kaufman,45201,Benzene,1.31
+2013,Texas,La Porte,43803,Chloroform,0.069667
+2013,Texas,La Porte,45201,Benzene,4.715
+2013,Texas,Laredo,43803,Chloroform,0.007778
+2013,Texas,Laredo,45201,Benzene,3.665556
+2013,Texas,Midlothian,43803,Chloroform,0.013621
+2013,Texas,Midlothian,45201,Benzene,0.844138
+2013,Texas,Midlothian,88103,Arsenic PM2.5 LC,6.9e-05
+2013,Texas,Midlothian,88128,Lead PM2.5 LC,0.002224
+2013,Texas,Mission,43803,Chloroform,0.013519
+2013,Texas,Mission,45201,Benzene,1.303333
+2013,Texas,Nederland,45201,Benzene,1.431902
+2013,Texas,Odessa,45201,Benzene,1.947722
+2013,Texas,Pasadena,43803,Chloroform,0.029167
+2013,Texas,Pasadena,45201,Benzene,4.49
+2013,Texas,Port Arthur,43803,Chloroform,0.0222955
+2013,Texas,Port Arthur,45201,Benzene,2.69307925
+2013,Texas,Port Neches,43803,Chloroform,0.027541
+2013,Texas,Port Neches,45201,Benzene,1.539344
+2013,Texas,San Antonio,43803,Chloroform,0.013273
+2013,Texas,San Antonio,45201,Benzene,1.330909
+2013,Texas,Socorro,43803,Chloroform,0.004655
+2013,Texas,Socorro,45201,Benzene,1.595172
+2013,Texas,Texas City,43803,Chloroform,0.020556
+2013,Texas,Texas City,45201,Benzene,2.081111
+2014,Texas,Austin,43803,Chloroform,0.020303
+2014,Texas,Austin,45201,Benzene,1.412727
+2014,Texas,Baytown,43803,Chloroform,0.027879
+2014,Texas,Baytown,45201,Benzene,2.167273
+2014,Texas,Beaumont,43803,Chloroform,0.0235165
+2014,Texas,Beaumont,45201,Benzene,1.61604433333333
+2014,Texas,Brownsville,43803,Chloroform,0.013333
+2014,Texas,Brownsville,45201,Benzene,1.114545
+2014,Texas,Channelview,43803,Chloroform,0.033824
+2014,Texas,Channelview,45201,Benzene,4.5331215
+2014,Texas,Clute (corporate name for Clute City),43803,Chloroform,0.025143
+2014,Texas,Clute (corporate name for Clute City),45201,Benzene,1.076571
+2014,Texas,Corpus Christi,43803,Chloroform,0.013154
+2014,Texas,Corpus Christi,45201,Benzene,2.5764765
+2014,Texas,Corpus Christi,88103,Arsenic PM2.5 LC,0
+2014,Texas,Corpus Christi,88128,Lead PM2.5 LC,0.001952
+2014,Texas,Dallas,43803,Chloroform,0.016364
+2014,Texas,Dallas,45201,Benzene,1.0581365
+2014,Texas,Dallas,88103,Arsenic PM2.5 LC,0.0002075
+2014,Texas,Dallas,88128,Lead PM2.5 LC,0.001381
+2014,Texas,Deer Park,43803,Chloroform,0.0240305
+2014,Texas,Deer Park,45201,Benzene,1.71916033333333
+2014,Texas,Deer Park,88103,Arsenic PM2.5 LC,0.000616
+2014,Texas,Deer Park,88128,Lead PM2.5 LC,0.00051
+2014,Texas,Denton,43803,Chloroform,0.011429
+2014,Texas,Denton,45201,Benzene,1.803429
+2014,Texas,El Paso,43803,Chloroform,0.014242
+2014,Texas,El Paso,45201,Benzene,1.720118
+2014,Texas,El Paso,88103,Arsenic PM2.5 LC,0.000427
+2014,Texas,El Paso,88128,Lead PM2.5 LC,0.001267
+2014,Texas,Fort Worth,43803,Chloroform,0.013235
+2014,Texas,Fort Worth,45201,Benzene,1.0564405
+2014,Texas,Galena Park,43803,Chloroform,0.055385
+2014,Texas,Galena Park,45201,Benzene,8.395385
+2014,Texas,Grapevine,43803,Chloroform,0.016571
+2014,Texas,Grapevine,45201,Benzene,0.965143
+2014,Texas,Greenville,43803,Chloroform,0.016286
+2014,Texas,Greenville,45201,Benzene,1.203429
+2014,Texas,Houston,43803,Chloroform,0.0353116666666667
+2014,Texas,Houston,45201,Benzene,1.99916416666667
+2014,Texas,La Porte,43803,Chloroform,0.088857
+2014,Texas,La Porte,45201,Benzene,4.241143
+2014,Texas,Laredo,43803,Chloroform,0.012188
+2014,Texas,Laredo,45201,Benzene,3.294375
+2014,Texas,Midlothian,43803,Chloroform,0.013529
+2014,Texas,Midlothian,45201,Benzene,0.875294
+2014,Texas,Midlothian,88103,Arsenic PM2.5 LC,0
+2014,Texas,Midlothian,88128,Lead PM2.5 LC,0.003045
+2014,Texas,Mission,43803,Chloroform,0.013824
+2014,Texas,Mission,45201,Benzene,1.154118
+2014,Texas,Nederland,45201,Benzene,1.165295
+2014,Texas,Odessa,45201,Benzene,1.597225
+2014,Texas,Pasadena,43803,Chloroform,0.026333
+2014,Texas,Pasadena,45201,Benzene,2.74
+2014,Texas,Port Arthur,43803,Chloroform,0.02298775
+2014,Texas,Port Arthur,45201,Benzene,1.87876275
+2014,Texas,Port Neches,43803,Chloroform,0.034857
+2014,Texas,Port Neches,45201,Benzene,1.308
+2014,Texas,San Antonio,43803,Chloroform,0.014857
+2014,Texas,San Antonio,45201,Benzene,1.450286
+2014,Texas,Socorro,43803,Chloroform,0.006857
+2014,Texas,Socorro,45201,Benzene,1.714286
+2014,Texas,Texas City,43803,Chloroform,0.027353
+2014,Texas,Texas City,45201,Benzene,2.144118

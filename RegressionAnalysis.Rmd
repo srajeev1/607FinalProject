@@ -1,6 +1,24 @@
-#-------------------------------------------------------------------------------------------------------
-#Load the required libraries
+---
+title: "NHE, GDP, Pollution Data - Analysis"
+author: "Suman, Sreeja, Jamey"
+date: "Monday, May 25, 2015"
+output: html_document
+---
 
+#Activity Definition:
+
+Acquire the National Health Expenditure Summary Data, Pollution Data, and perform basic regression analysis between the National Health Expenditure Vs GDP , and National Health Expenditure Vs Pollution.
+
+For this analysis we would take a sample pollutant  * Arsenic PM2.5 LC *
+
+Data Sources:  
+   + Pollution Data: http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata   
+   + National Health Expenditure Summary: http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/NationalHealthExpendData/Downloads/NHEGDP13.zip   
+
+
+## Data Acquisition:
+
+```{r, echo=FALSE}
 library(rvest)
 library(plyr)
 Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_45")
@@ -9,9 +27,9 @@ Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_45")
 library(rJava)
 library(xlsx)
 library(knitr)
+```
 
-#-------------------------------------------------------------------------------------------------------
-
+```{r}
 # *********** Load the hazardoes air pollutants: *****************************************************
 
 haps.url <- "https://ofmext.epa.gov/AQDMRS/ws/list?name=param&pc=CORE_HAPS&resource=rawData"
@@ -22,7 +40,6 @@ haps.raw.data <- html(haps.url) %>%
 
 #Load the hazardous air pollutants into a data frame.
 haps.data <- read.table(text=haps.raw.data, sep="\t",  col.names = c("Parameter.Code", "Parameter.Name"))
-View(haps.data)
 
 #-------------------------------------------------------------------------------------------------------
 
@@ -54,28 +71,27 @@ GetAnnualPollutionData <- function(year) {
 #Call the function 'GetAnnualPollutionData' to load the annual polllution data between 2009 to 2014
 annual.pollution.data <- ldply(2009:2014, GetAnnualPollutionData)
 dim(annual.pollution.data)
-View(annual.pollution.data)
 
 #-------------------------------------------------------------------------------------------------------
 
 # Join haps.data with annual.pollution.data on Parameter.Code
 #This will give us only the hazardous polluants data ONLY across the country.
+
 data.merge <- merge(x = annual.pollution.data, y = haps.data, by = "Parameter.Code")
-colnames(data.merge)
-dim(data.merge)
+```
 
+```{r, echo=FALSE,warning=FALSE}
 library(dplyr)
+```
 
+
+__Proxy data - Just take 1 Pollutant - Arsenic PM2.5 LC - for each year__
+```{r}
 data.tidy <- data.merge %>%
   select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Event.Type,Arithmetic.Mean ) %>%
   filter(Event.Type  == "No Events") %>%
   arrange(desc(Year), State.Name)
 
-kable(head(data.tidy))
-
-#-----------------------------
-# proxy data - Just take 1 Pollutant - Arsenic PM2.5 LC - for each year
-#-----------------------------
 
 # Summarise data - group by city to get the ANNUAL mean pollution in that city
 datatidy.pollutant <- data.tidy %>%
@@ -87,13 +103,13 @@ datatidy.pollutant <- data.tidy %>%
 
 
 dim(datatidy.pollutant)
-View(datatidy.pollutant)
 kable(head(datatidy.pollutant))
+```
 
 
+__Now Load the National Health Expenditure Summary Data __
 
-#-------------------------------------------------------------------------------------------------------
-
+```{r}
 # ********** Load the National Health Expenditure Summary Data *****************************************
 
 # National health expenditure summary data
@@ -109,13 +125,11 @@ download.file(url.nhe, tf)
 nhe.data <- read.xlsx(file = unzip(tf, "NHE13_Summary_Final.xls"), header = FALSE, startRow=2, rowIndex = c(2,3,9,10,11), colIndex = c(1:55), sheetIndex = 1 )
 
 #unlink the file handle
-unlink(temp)
+unlink(tf)
 
 
 #Make rows as columns and columns as rows
 nhe.data.final <- t(nhe.data)
-
-View(nhe.data.final)
 
 #Nullify row names - not needed.
 rownames(nhe.data.final) <- NULL
@@ -133,32 +147,36 @@ colnames(nhe.data.final)[1] <- "Year"
 nhe.data.final[, 1] <- as.numeric(nhe.data.final[,1])
 
 #View the final data
-View(nhe.data.final)
+kable(head(nhe.data.final))
 
-colnames(nhe.data.final)
-
-#--------------------------------------------------------------------------------------
-# Regression Analysis -  NHE, GDP, and a sample pollutant Data
-#--------------------------------------------------------------------------------------
+```
 
 
+##Analysis
+
+```{r, echo=FALSE}
 library(dplyr)
 library(reshape2)
 library(ggplot2)
+```
 
+
+```{r}
+
+#Convert matrix to data frame:
 nhe.data.df <-  as.data.frame(nhe.data.final)
 
-
+#Provide colnames
 colnames(nhe.data.df) <- c('Year', 'NHE_In_Billions', 'Population_In_Millions', 'GDP_In_Billions', 'NHE_PerCapitaAmt')
 
-View(nhe.data.df)
-
+#Refactor the fields
 nhe.data.df$Year <- as.numeric(as.character(nhe.data.df$Year))
 nhe.data.df$NHE_In_Billions <- as.numeric(as.character(nhe.data.df$NHE_In_Billions))
 nhe.data.df$Population_In_Millions <- as.numeric(as.character(nhe.data.df$Population_In_Millions))
 nhe.data.df$GDP_In_Billions <- as.numeric(as.character(nhe.data.df$GDP_In_Billions))
 nhe.data.df$NHE_PerCapitaAmt <- as.numeric(as.character(nhe.data.df$NHE_PerCapitaAmt))
 
+#plot NHE
 ggplot(nhe.data.df, aes(x = Year, y = NHE_In_Billions)) + geom_point() + geom_smooth(method="lm") + 
   labs(x = "Year", y = "NHE in Billions", title = "National Health Expenditure (1960-2014) ") + theme(plot.title = element_text(size=20, face="bold", vjust=2))
 
@@ -188,16 +206,24 @@ library(grid)
 library(gridExtra)
 library(ggplot2)
 grid.arrange(p1, p2, nrow=2)
+```
 
 
+__NHE Vs Pollutant Data__
 
-#Based on the trend line from this sample data, there appears to be a strong positive linear relationship between the GDP and NHE variables.
+```{r}
 
-ggplot(datatidy.pollutant, aes(x = Year, y = Arithmetic.Mean)) + geom_point() + geom_smooth(method="lm") 
-  labs(x = "Year", y = "NHE in Billions", title = "Pollutant - Arsenic PM2.5 LC")
+ggplot(datatidy.pollutant, aes(x = Year, y = Arithmetic.Mean)) + geom_point() + geom_smooth(method="lm") +
+  labs(x = "Year", y = "NHE in Billions", title = "Pollutant - Arsenic PM2.5 LC Trend") + theme(plot.title = element_text(size=20, face="bold", vjust=2))
 
+```
 
+```{r,echo=FALSE}
 library(dplyr)
+```
+
+_Just take proxy data of NHE since the year 2008, and compare it with the Pollutant [Arsenic PM2.5] data_
+```{r}
 nhe.data.reg <- select(nhe.data.df, Year, NHE_In_Billions, GDP_In_Billions) %>% 
   filter(Year >= 2008)
 
@@ -208,10 +234,8 @@ frame <- as.data.frame(cbind(Y1,X1))
 ggplot(frame, aes(x = X1, y = Y1)) + geom_point() + geom_smooth(method="lm") + 
   labs(x = "Pollutant Measure", y = "NHE in Billions", title = "Pollutant (Arsenic PM2.5) Vs NHE") + geom_point() + geom_line() + theme(plot.title = element_text(size=20, face="bold", vjust=2))
 
-#Based on the trend line from this ~limited~ sample data, there appears to be a weak positive linear relationship between the pollutant and NHE variables.
-#This relationship may be coincidental.Need more analyses with combination of HAPS (pollutants) to gain insights.
+```
 
-#-------------------------------------------------------------------------------------------------------
+##Conclusion
 
-
-
+Based on the trend line from this sample data, there appears to be a strong positive linear relationship between the *GDP and NHE* variables.   However from this *limited* sample pollutant data, there appears to be a **weak positive linear relationship between the pollutant and NHE** variables. Also, this relationship may be **coincidental**.Need more analyses with combination of HAPS (pollutants) to gain insights.  
