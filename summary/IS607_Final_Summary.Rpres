@@ -3,6 +3,9 @@ IS607 Final Project Summary
 author: Jamey, Sreejaya, Suman
 date: 05/25/2015
 
+Healthcare Expenses, Air Pollution in US
+![View](Healthcare_Pollution.PNG)
+
 Proposal
 ========================================================
 
