@@ -1,6 +1,6 @@
 ---
-title: "Preare & Load Proxy Pollution Data into Neo4J"
-author: Suman, Sreeja, Jamey
+title: "Prepare & Load Proxy Pollution Data into Neo4J"
+author: Suman, Sreejaya, Jamey
 date: "Monday, May 25, 2015"
 output: html_document
 ---
@@ -86,38 +86,19 @@ library(dplyr)
 data.merge <- merge(x = annual.pollution.data, y = haps.data, by = "Parameter.Code")
 
 data.tidy <- data.merge %>%
-                 select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Event.Type,Arithmetic.Mean ) %>%
+                 select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x, Event.Type,Arithmetic.Mean ) %>%
                      filter(Event.Type  == "No Events") %>%
                           arrange(desc(Year), State.Name)
 
-#-----------------------------
-# proxy data - Just take 3 cities and Compare.
-#-----------------------------
-data.tidy.yearCity <- data.merge %>%
-    select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Event.Type,Arithmetic.Mean ) %>%
-          filter(Event.Type  == "No Events" & City.Name == "Chattanooga"| City.Name =="Los Angeles" | City.Name =="New York") %>%
-                arrange(desc(Year), State.Name)
-
-kable(head(data.tidy.yearCity))
-
-
 # Summarise data - group by city to get the ANNUAL mean pollution in that city
 datatidy.pollutant <- data.tidy %>%
-            select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Arithmetic.Mean ) %>%
+            select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x, Arithmetic.Mean ) %>%
                 group_by(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x) %>%
                       summarise_each(funs(mean(Arithmetic.Mean)))
 
 dim(datatidy.pollutant)
 kable(head(datatidy.pollutant))
 
-#-----------------------------
-#Those less than 10 micrometers in diameter (PM10) are so small that they can get into the lungs, 
-#potentially causing serious health problems. Ten micrometers is smaller than the width of a single human hair. 
-#Fine particles (PM2.5).
-#Filter out small particles
-#-----------------------------
-haps.unique.PM <-datatidy.pollutant[grep(" PM", datatidy.pollutant$Parameter.Name.x), ]
-kable(head(haps.unique.PM))
 ```
 
 

@@ -1,6 +1,6 @@
 ---
 title: "NHE, GDP, Pollution Data - Analysis"
-author: "Suman, Sreeja, Jamey"
+author: "Suman, Sreejaya, Jamey"
 date: "Monday, May 25, 2015"
 output: html_document
 ---
@@ -9,7 +9,7 @@ output: html_document
 
 Acquire the National Health Expenditure Summary Data, Pollution Data, and perform basic regression analysis between the National Health Expenditure Vs GDP , and National Health Expenditure Vs Pollution.
 
-For this analysis we would take a sample pollutant  * Arsenic PM2.5 LC *
+For this analysis we would take a sample pollutants of *PM2.5*
 
 Data Sources:  
    + Pollution Data: http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata   
@@ -85,7 +85,7 @@ library(dplyr)
 ```
 
 
-__Proxy data - Just take 1 Pollutant - Arsenic PM2.5 LC - for each year__
+__Proxy data - Just take  Pollutants of type  PM2.5 - for each year__
 ```{r}
 data.tidy <- data.merge %>%
   select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Event.Type,Arithmetic.Mean ) %>%
@@ -95,15 +95,16 @@ data.tidy <- data.merge %>%
 
 # Summarise data - group by city to get the ANNUAL mean pollution in that city
 datatidy.pollutant <- data.tidy %>%
-  select(Year,State.Name, City.Name ,Parameter.Code,Parameter.Name.x,Latitude,Longitude, Arithmetic.Mean ) %>%
-  filter(Parameter.Name.x=="Arsenic PM2.5 LC") %>%
-  group_by(Year, Parameter.Name.x) %>%
+  select(Year,Parameter.Name.x, Arithmetic.Mean ) %>%
+  filter(grepl(" PM2.5", Parameter.Name.x)) %>%
+  group_by(Year) %>%
   summarise_each(funs(mean(Arithmetic.Mean)))
 
+datatidy.pollutant$Parameter.Name.x <- "PM2.5"
+
+kable(datatidy.pollutant)
 
 
-dim(datatidy.pollutant)
-kable(head(datatidy.pollutant))
 ```
 
 
@@ -209,12 +210,13 @@ grid.arrange(p1, p2, nrow=2)
 ```
 
 
+
 __NHE Vs Pollutant Data__
 
 ```{r}
 
 ggplot(datatidy.pollutant, aes(x = Year, y = Arithmetic.Mean)) + geom_point() + geom_smooth(method="lm") +
-  labs(x = "Year", y = "NHE in Billions", title = "Pollutant - Arsenic PM2.5 LC Trend") + theme(plot.title = element_text(size=20, face="bold", vjust=2))
+  labs(x = "Year", y = "Pollution Measure", title = "Pollutant -  PM2.5 Trend") + theme(plot.title = element_text(size=20, face="bold", vjust=2))
 
 ```
 
@@ -222,20 +224,83 @@ ggplot(datatidy.pollutant, aes(x = Year, y = Arithmetic.Mean)) + geom_point() + 
 library(dplyr)
 ```
 
-_Just take proxy data of NHE since the year 2008, and compare it with the Pollutant [Arsenic PM2.5] data_
+_Just take proxy data of NHE since the year 2008, and compare it with the Pollutant [PM2.5] data_
 ```{r}
 nhe.data.reg <- select(nhe.data.df, Year, NHE_In_Billions, GDP_In_Billions) %>% 
   filter(Year >= 2008)
 
-Y1 <- nhe.data.reg$NHE_In_Billions
-X1 <- datatidy.pollutant$Arithmetic.Mean
-frame <- as.data.frame(cbind(Y1,X1))
+NHE <- nhe.data.reg$NHE_In_Billions
+POLLUTANT <- datatidy.pollutant$Arithmetic.Mean
+frame <- as.data.frame(cbind(NHE,POLLUTANT))
 
-ggplot(frame, aes(x = X1, y = Y1)) + geom_point() + geom_smooth(method="lm") + 
-  labs(x = "Pollutant Measure", y = "NHE in Billions", title = "Pollutant (Arsenic PM2.5) Vs NHE") + geom_point() + geom_line() + theme(plot.title = element_text(size=20, face="bold", vjust=2))
+ggplot(frame, aes(x = POLLUTANT, y = NHE)) + geom_point() + geom_smooth(method="lm") + 
+  labs(x = "Pollutant Measure", y = "NHE in Billions", title = "Pollutant (PM2.5) Vs NHE") + geom_point() + geom_line() + theme(plot.title = element_text(size=20, face="bold", vjust=2))
+
+fit <- lm(NHE ~ POLLUTANT, data = frame)
+summary(fit)
+
+cor(frame)
+
 
 ```
 
+
+__Multiple Linear Regression__
+
+```{r,echo=FALSE}
+library(car)
+```
+
+```{r,warning=FALSE}
+nhe.data.full.reg <- select(nhe.data.df, Year, NHE_In_Billions, GDP_In_Billions,  NHE_PerCapitaAmt, Population_In_Millions) %>%   filter(Year >= 2008)
+nhe.data.full.reg$Pollution <- POLLUTANT
+nhe.data.full.reg <- nhe.data.full.reg[, -1]
+
+cor(nhe.data.full.reg)
+
+fit <- lm(NHE_In_Billions ~  Population_In_Millions + GDP_In_Billions + NHE_PerCapitaAmt + Pollution, data = nhe.data.full.reg)
+
+scatterplotMatrix(nhe.data.full.reg)
+```
+
+
+###Which Variables are most important in predicting the outcome ?
+
+```{r,warning=FALSE}
+#Relative Weights Method - Approximates the average increase in R-square obtained by adding a predictor variable #across all possible submodels_
+
+#relweights method from 'R in Action':adapted from an SPSS program generously provided by Dr. Johnson. See Johnson (2000, Multivariate Behavioral Research, 35, 1-19) for an explanation of how the relative weights are derived.
+relweights <- function(fit,...){
+R <- cor(fit$model)
+nvar <- ncol(R)
+rxx <- R[2:nvar, 2:nvar]
+rxy <- R[2:nvar, 1]
+svd <- eigen(rxx)
+evec <- svd$vectors
+ev <- svd$values
+delta <- diag(sqrt(ev))
+lambda <- evec %*% delta %*% t(evec)
+lambdasq <- lambda ^ 2
+beta <- solve(lambda) %*% rxy
+rsquare <- colSums(beta ^ 2)
+rawwgt <- lambdasq %*% beta ^ 2
+import <- (rawwgt / rsquare) * 100
+import <- as.data.frame(import)
+row.names(import) <- names(fit$model[2:nvar])
+names(import) <- "Weights"
+import <- import[order(import),1, drop=FALSE]
+dotchart(import$Weights, labels=row.names(import),
+xlab="% of R-Square", pch=19,
+main="Relative Importance of Predictor Variables",
+sub=paste("Total R-Square=", round(rsquare, digits=3)),
+...)
+return(import)
+}
+
+relweights(fit, col= "blue")
+```
+
+
 ##Conclusion
 
-Based on the trend line from this sample data, there appears to be a strong positive linear relationship between the *GDP and NHE* variables.   However from this *limited* sample pollutant data, there appears to be a **weak positive linear relationship between the pollutant and NHE** variables. Also, this relationship may be **coincidental**.Need more analyses with combination of HAPS (pollutants) to gain insights.  
+Based on the trend line from this sample data, there appears to be a strong positive linear relationship between the *NHE Vs the Population, Percapita,GDP* variables.   However from this *limited* sample pollutant data, there appears to be a **weak positive linear relationship between the pollutant and NHE** variables. Also, this relationship may be **coincidental**.Need more analyses with combination of HAPS (pollutants) to gain insights.
