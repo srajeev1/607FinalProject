@@ -59,12 +59,29 @@ Exploratory Data Analysis - Pollution Concentration Study
 ![View](Pollutant_Concentation_1.PNG)
 
 
-Load the Pollution data into Neo4J & Analyse
+Time Series Analysis - Pollution Data
+=======================================
+
+- PM2.5 Particles in Daily Pollution Data From 2012-14 in "Queens, NY"
+- Used "xts" package and ts function from base R for the time series analysis 
+
+![View](TS_1.PNG)
+
+
+Time Series Analysis - Decomposing  Seasonal Pollution Data
+===========================================================
+
+- To estimate the trend component and seasonal component of a seasonal time series that can be described using an additive model, we can use the "decompose()" function in R. This function estimates the trend, seasonal, and irregular components of a time series that can be described using an additive model
+
+![View](TS_2.PNG)
+
+
+Load the Pollution data into Neo4J & Review
 =========================================================
 
 - Data Acquisition & Tidying 
 - Extract & Transform the required data into csv files
-- Load the csv files into neo4j and Analyse
+- Load the csv files into neo4j and review
 
 [Right click & Open - Neo4J Data Preparation & Analysis](http://rpubs.com/pskumar/IS607Final_Neo4JDA)
 ![View](neo4j_1.PNG)
